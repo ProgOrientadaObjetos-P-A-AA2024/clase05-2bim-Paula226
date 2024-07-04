@@ -19,6 +19,31 @@ public class OperacionesEstudiantes {
     // Una Persona, tiene un atributo ciudad de tipo Ciudad
     // Una Ciudad, tiene un atributo nombre de tipo String
     
+    public void establecerEdadMinima() {
+        edadminima = 100;
+        for (int i = 0 ; i < estudiantes.size(); i++) {
+            if (estudiantes.get(1).obtenerEdad()< edadminima) {
+                edadminima = estudiantes.get(i).obtenerEdad();
+            }
+        }
+    }
+    public void establecerEdadMaxima() {
+         edadmaxima = -100;
+        for (int i = 0 ; i < estudiantes.size(); i++) {
+            if (estudiantes.get(1).obtenerEdad()> edadmaxima) {
+                edadmaxima = estudiantes.get(i).obtenerEdad();
+            }
+        }
+    }
+
+    public void establecerListaCiudadesEstudiantes() {
+        String cadena = " ";
+        for (int i = 0 ; i < estudiantes.size(); i++) {
+            cadena = String.format("%s%s\n", cadena,
+                    estudiantes.get(i).obtenerCiudad().obtenerNombre( ));
+        }
+        listaCiudadesEstudiantes = cadena;
+    }
     
     
     public void establecerEstudiante(ArrayList<Persona> lista){
@@ -27,6 +52,16 @@ public class OperacionesEstudiantes {
     
     public ArrayList<Persona> obtenerEstudiante(){
         return estudiantes;
+    }
+    public int obtenerEdadMinima() {
+        return edadminima;
+    }
+    public int obtenerEdadMaxima() {
+        return edadmaxima;
+    }
+
+    public String obtenerListaCiudadesEstudiantes() {
+        return listaCiudadesEstudiantes;
     }
     
     public void establecerPromedioEdades(){
@@ -40,6 +75,18 @@ public class OperacionesEstudiantes {
     public double obtenerPromedioEdades(){
         
         return promedioEdades;
+    }
+    @Override
+    public String toString() {
+        String cadena = String.format("Promedio de edad: %.2f\n"
+               + "Edad Minima: %d\n"
+               + "Edad Maxima: %d\n"
+               + "Lista Ciudades:\n%s\n",
+                     obtenerPromedioEdades(),
+                     obtenerEdadMinima(),
+                     obtenerEdadMaxima(),
+                     obtenerListaCiudadesEstudiantes());
+                     return cadena;
     }
     
     
